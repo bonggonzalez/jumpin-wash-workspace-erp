@@ -21,7 +21,7 @@ flowchart TD
 
 ## How to read this system
 
-**Start with [the business records and relationships](docs/data-model-and-lineage.md).** The opening separates accounts, service work, items, prices, bills and status updates from the files that hold them. Then follow [the architecture walkthrough](docs/architecture.md): what each workbook holds, what its formulas or scripts do, and what the next workbook receives. Detailed formula traces remain optional.
+**Start with [the business data model](docs/business-data-model.md).** It follows Service Order Slips (SOS) through complete delivery, pickup-date billing cutoffs and statement status, then separates observed Sheets relationships from proposed relational tables. The [lineage walkthrough](docs/data-model-and-lineage.md) traces selected formulas and imports. Then follow [the architecture walkthrough](docs/architecture.md): what each workbook holds, what its formulas or scripts do, and what the next workbook receives. Detailed formula traces remain optional.
 
 Then follow the parts you want to examine:
 

@@ -4,6 +4,8 @@ A total is more useful when I can explain where it came from. In this system, th
 
 The relationships below describe the spreadsheet implementation. They form a conceptual model reconstructed from documentation and selected formulas; they are not a relational database schema. No primary-key, foreign-key, uniqueness, or referential-integrity enforcement is assumed.
 
+For the integrated ER views, source relationship register and proposed tables, see [the business data model](business-data-model.md). SOS means **Service Order Slip**; each SOS represents one pickup form.
+
 ## The business records before the files
 
 The operation deals with accounts, laundry work, items, prices, bills and status updates. Those concepts are different from the workbook or tab used to hold them.
@@ -11,14 +13,14 @@ The operation deals with accounts, laundry work, items, prices, bills and status
 | Concept | Meaning | Evidence boundary |
 |---|---|---|
 | Hotel–department account | A hotel and operating department distinguished for billing | Account-level organization is documented; a common unique account identifier has not been verified |
-| Service activity and item lines | Laundry work with item quantities, dates, delivery information and line amounts | Selected worksheet fields and formulas inspected; the exact business grain of one service record still needs confirmation |
+| Service activity and item lines | Laundry work with item quantities, dates, delivery information and line amounts | Selected worksheet fields and formulas inspected; instructions establish one SOS per pickup form; durable cross-workbook identity remains unverified |
 | Item reference | The item text used to retrieve a processing reference or local price | Matching expressions inspected; a globally unique item identity across domains is not established |
-| Processing reference | A definition selected by an alias, supplying loading quantities and processing minutes | Selected alias and parameter lookups inspected; key uniqueness is unverified |
+| Processing reference | A definition selected by an alias, supplying loading quantities and processing minutes | Selected alias and parameter lookups inspected; live profiling found a duplicate alias with different parameter rows; lookups select the first match |
 | Pricing reference | The item/price lookup used in a service-line amount | Central customer projections, copying source and local matching inspected; effective-date/version binding remains unverified |
 | Bill / statement of account | Selected service information assembled for a billing period | Period selection inspected; one monthly workbook is not assumed to equal one bill |
-| Billing status event | A timestamped update describing billing progress | Historical documentation supports status history; event identifiers and current linkage remain unverified |
+| Billing status event | A timestamped update describing billing progress | current matching uses account/month/cutoff in annual context; event identity enforcement remains unverified |
 
-The strongest inspected relationships are item-to-processing-reference matching and service-line-to-local-price matching. The broader account/service/bill/status relationships are documented context. They are not yet a formal ER schema with verified cardinalities.
+The strongest inspected relationships are item-to-processing-reference matching and service-line-to-local-price matching. Owner-confirmed rules now establish whole-pickup completion before billing, pickup-date cutoff assignment and one statement per account/cutoff. Formal keys and constraints remain proposed rather than enforced Sheets behavior.
 
 ### Identity and physical location are different
 
@@ -26,7 +28,7 @@ A service-tab number locates a worksheet inside a workbook. A row locates an ite
 
 Summary workbooks, the workbook-location registry and dashboard outputs belong in the implementation and reporting views. An imported total is not a new originating service transaction, and a Paid status does not by itself establish a payment-ledger entity.
 
-The [architecture walkthrough](architecture.md) maps these concepts to files, functions and outputs. The traces below then open up selected mechanisms. A normalized relational redesign would be separate proposed work; it is not needed to explain these existing connections.
+The [architecture walkthrough](architecture.md) maps these concepts to files, functions and outputs. The traces below then open up selected mechanisms. The linked model includes a separately labeled proposed relational design.
 
 ## Observed chain: item to processing parameters
 
@@ -75,6 +77,6 @@ Historical documentation describes delivery-date entry as a billability gate. Th
 
 ## What remains to trace
 
-The broader documented flow continues through billing status, collections, financial consolidation, and executive KPIs. Current latest-status selection, event tie handling, and selected KPI source formulas remain source gaps. The dashboard export/email source has now been inspected. Historical relationships can orient the reader, but they do not complete those formula-level traces.
+The broader documented flow continues through billing status, collections, financial consolidation, and executive KPIs. Current status selection has now been inspected: matrix and long-form paths select the highest matching worksheet row, not the maximum timestamp. Matching normalization differs by path. Selected KPI source formulas and event identity enforcement remain gaps. The dashboard export/email source has now been inspected. Historical relationships can orient the reader, but they do not complete those formula-level traces.
 
 All observed edges here come from bounded, read-only formula inspection. No recalculation or end-to-end execution is claimed. See [verification scope](verification.md) for the consolidated record.

@@ -6,6 +6,8 @@ I built separate workbooks for those responsibilities and connected them. The mo
 
 That connection is the part worth looking at closely. A statement, a collection status, and a management report serve different purposes, but they need to refer back to the same underlying work.
 
+A **Service Order Slip (SOS)** represents one pickup form. All its picked-up items must be delivered before billing it. Pickup date determines its statement period: a June 14 pickup completed June 18 remains in the June 1–15 statement. Each hotel–department has one Statement of Account per cutoff. These are owner-confirmed business rules; the selected formulas do not establish universal automatic enforcement. See [the business data model](../business-data-model.md) for the ER views and source mapping.
+
 ## Design and responsibilities
 
 | Layer | Responsibility | Evidence |
@@ -15,7 +17,7 @@ That connection is the part worth looking at closely. A statement, a collection 
 | Customer pricing | Authoritative pricing copied into monthly workbooks as period snapshots | Pricing projections, local lookups and recovered distribution source inspected |
 | Summary workbook | Consolidate monthly billing for a hotel/department | Selected cycle selection, conditional imports and totals inspected |
 | Billing Grabber | Provision monthly workbooks and integrate Summary outputs | Provisioning source and integration formulas inspected |
-| Billing Tracker | Track validation, acceptance and payment separately from quantities | Historical documentation; current status implementation not yet inspected |
+| Billing Tracker | Track validation, acceptance and payment separately from quantities | Selected event fields, account/period matching and last-row status formulas inspected |
 
 In the documented workflow, a quantity correction belongs in the original service worksheet. A status update belongs in Billing Tracker. Keeping those responsibilities separate means the tracker follows the billing without becoming another place to edit the quantities. This is an operating rule; permission enforcement has not been verified.
 
@@ -87,7 +89,7 @@ Separately, an inspected delivery-date display formula uses non-KG pickup/balanc
 ## Controls, exceptions and limits
 
 - Historical documentation describes reconciliation against pickup forms, delivery records and customer records, with corrections at the source.
-- Billing Tracker documentation describes timestamped status entries and latest-event selection. No claim of immutable history or enforced transition order is made.
+- Billing Tracker stores date/time fields, but inspected current-status formulas select the last matching physical row for account/month/cutoff in annual context. No claim of timestamp-based selection, immutable history or enforced transition order is made.
 - The observed `IFNA` wrapper does not handle every possible import, permission or calculation error. A blank result can also reduce the visibility of a missing registry match.
 - Registry naming, source layout and access dependencies are part of the integration design. Their failure modes are review considerations, not evidence of incidents.
 - [Verification scope](../verification.md) records source inspection and execution boundaries.
