@@ -4,7 +4,7 @@ Jumpin Wash is a commercial laundry serving hotels. Its operating system keeps e
 
 The central control uses **two clocks**: all items on a pickup must be delivered before that pickup is billable; the pickup date determines its billing cutoff. A June 14 pickup completed June 18 belongs in the June 1–15 statement. Each hotel–department receives one Statement of Account per cutoff. These are owner-confirmed operating rules.
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   A["Hotel + department"] --> B["Pickup recorded on SOS"]
   B --> C["Item lines tracked through deliveries"]
@@ -15,7 +15,7 @@ flowchart TD
   F --> G["One statement per hotel–department and cutoff"]
   G --> H["Collection status tracked"]
   O["Operations, billing, supply, and finance outputs"] --> R["Reports Dashboard aggregates module outputs"]
-\`\`\`
+```
 
 *Business lifecycle and separate aggregate reporting view. The delivery gate is an owner-confirmed rule; automatic enforcement has not been verified.*
 
