@@ -1,44 +1,52 @@
-# Jumpin Wash — Google Workspace ERP
+# Jumpin Wash — Commercial Laundry Operations System
 
-Running a laundry business means connecting what was picked up, what was processed and delivered, what can be billed, and what still needs to be collected. I built Jumpin Wash’s Google Workspace systems to carry that information across operations, billing, payroll, and management reporting.
+Jumpin Wash is a commercial laundry serving hotels. Its operating system keeps each hotel–department’s linen service connected from pickup and delivery through billing and collection follow-up, while giving management views across operations and finance.
 
-I’m self-taught in building these systems. As operating needs evolved, the work grew into connected modules: specialized workbooks, shared references, spreadsheet formulas, and Apps Script. A workbook’s output becomes useful when the next process can use it—and when I can follow a reported number back to its source.
+The central control uses **two clocks**: all items on a pickup must be delivered before that pickup is billable; the pickup date determines its billing cutoff. A June 14 pickup completed June 18 belongs in the June 1–15 statement. Each hotel–department receives one Statement of Account per cutoff. These are owner-confirmed operating rules.
 
-**Platform:** Google Sheets, Apps Script, Forms, Drive, and Gmail.
-
-```mermaid
+\`\`\`mermaid
 flowchart TD
-  M["Master data and standards"] --> O["Operations and delivery"]
-  M --> B["Billing preparation"]
-  O --> B
-  B --> S["Summary consolidation"]
-  S --> C["Collections"]
-  S --> R["Management reporting"]
-  C --> R
-```
+  A["Hotel + department"] --> B["Pickup recorded on SOS"]
+  B --> C["Item lines tracked through deliveries"]
+  C -.-> D["All items delivered: billing eligible"]
+  B --> E["Pickup date assigns cutoff"]
+  D --> F["Monthly billing and period pricing"]
+  E --> F
+  F --> G["One statement per hotel–department and cutoff"]
+  G --> H["Collection status tracked"]
+  O["Operations, billing, supply, and finance outputs"] --> R["Reports Dashboard aggregates module outputs"]
+\`\`\`
 
-*Functional overview from module documentation.*
+*Business lifecycle and separate aggregate reporting view. The delivery gate is an owner-confirmed rule; automatic enforcement has not been verified.*
 
-## Business impact
+## What the system does
+
+The Google Workspace implementation connects pickup/service records, delivery and linen-balance records, monthly billing workbooks, hotel–department summaries, a Billing Tracker, and management reporting. Billing preparation uses local period pricing; the Tracker records dated validation, acceptance, and payment statuses. The Reports Dashboard presents aggregate module outputs. Some KPI formulas and their exact lineage remain untraced.
+
+The system grew through specialized workbooks, shared references, spreadsheet formulas, and Apps Script. This repository follows how information moves between those parts and shows selected formulas, scripts, business relationships, and verification limits. Its proposed relational design is portfolio analysis, not a deployed database or an ERP rebuild.
+
+## Reported business impact
 
 On-ground assessments with the workforce indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are workforce assessments, not formal timing-study results.
 
-## Explore the system
+## My contribution
 
-For a concise, source-anchored walkthrough from a pickup record through billing, collection follow-up, and management reporting, see [Follow one service record](docs/implementation-walkthrough.md).
+I built the original Google Workspace production system and evolved it as operating needs changed. The project span of 2021–2026 is user-reported; available evidence does not date or attribute every later enhancement individually. The 2026 portfolio review mapped selected source-grounded business relationships, inspected formulas and Apps Script, and documented a proposed relational design. AI assisted this documentation and source review; it did not build the original system.
 
-Start with [the business relationships](docs/business-data-model.md#1-business-relationships), then [how the workbooks connect](docs/architecture.md). A **Service Order Slip (SOS)** represents one pickup form. Pickup date determines its billing cutoff; all items must be delivered before that pickup can be billed.
+## Explore the evidence
 
-| Follow this story | What you can inspect |
+Follow the business flow in this order:
+
+| Step | What to inspect |
 |---|---|
-| [Billing and collections](docs/case-studies/billing-and-collections.md) | Customer pricing, monthly file preparation, service amounts, consolidation and status tracking |
-| [Production standards](docs/case-studies/production-standards.md) | Shared item definitions, new-item mapping, overrides and processing parameters |
-| [Executive reporting](docs/case-studies/executive-reporting.md) | Reporting inputs, management outputs and PDF/email distribution |
+| 1. [Billing and collections](docs/case-studies/billing-and-collections.md) | Customer pricing, monthly file preparation, service amounts, consolidation and status tracking |
+| 2. [Production standards](docs/case-studies/production-standards.md) | Shared item definitions, new-item mapping, overrides and processing parameters |
+| 3. [Executive reporting](docs/case-studies/executive-reporting.md) | Aggregate reporting inputs, management outputs, PDF/email distribution, and limits in KPI lineage |
 
-For technical depth, inspect the [formula walkthrough](examples/formula-exhibits.md), [original automation helpers](src/README.md), and [data lineage](docs/data-model-and-lineage.md). The [proposed relational design](docs/business-data-model.md#3-proposed-relational-design) expresses the business relationships as tables and constraints; it is new portfolio analysis, separate from the deployed Google Workspace implementation.
+For a concise handoff walkthrough, see [How pickup, billing, collections, and reporting connect](docs/implementation-walkthrough.md). The [business relationships](docs/business-data-model.md#1-business-relationships) explain the source basis for SOS, delivery, billing, and cutoff rules; [how the workbooks connect](docs/architecture.md) documents module relationships.
 
-## Scope
+For implementation detail, inspect the [formula walkthrough](examples/formula-exhibits.md), [selected original automation helpers](src/README.md), and [data lineage](docs/data-model-and-lineage.md). The [proposed relational design](docs/business-data-model.md#3-proposed-relational-design) expresses business relationships as tables and constraints; it is separate from the deployed Google Workspace implementation.
 
-The walkthroughs focus on billing, production standards, and reporting; payroll is part of the wider system but has no dedicated implementation walkthrough here. Selected source-derived formulas and historical documentation support different levels of detail; see [verification scope](docs/verification.md). Production records and private configuration are excluded. This is system documentation, not a complete deployment package. AI assisted documentation preparation and review.
+## Scope and verification
 
-The [selected original automation helpers](src/README.md) include six isolated checks and explain the surrounding file-preparation and reporting workflows.
+The walkthroughs focus on billing, production standards, and reporting; payroll is part of the wider system but has no dedicated implementation walkthrough here. Selected source-derived formulas and historical documentation support different levels of detail; see [verification scope](docs/verification.md). Production records and private configuration are excluded. This is system documentation, not a complete deployment package. The selected Apps Script helpers have six isolated checks; they do not constitute a production test.
