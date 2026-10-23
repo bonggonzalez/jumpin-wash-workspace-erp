@@ -81,7 +81,7 @@ Here, H is quantity, O is unit price, and P is amount. The formula displays blan
 
 Workforce assessments indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are reported assessments, not formal timing-study results.
 
-I built the original Google Workspace production system and evolved it as operating needs changed. The 2021–2026 project span is user-reported; available evidence does not date or attribute every enhancement individually. In 2026, I reviewed selected formulas and Apps Script, mapped source-grounded business relationships, and documented a proposed relational design. AI assisted this portfolio review; it did not build the original system.
+I built the original Google Workspace production system during 2021–2024. In 2026, I reviewed selected formulas and Apps Script, mapped source-grounded business relationships, and documented a proposed relational design. AI assisted this portfolio review; it did not build the original system.
 
 ## Continue exploring
 
