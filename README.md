@@ -1,38 +1,38 @@
-# Jumpin Wash — Commercial Laundry Operations System
+# Jumpin Wash | Hotel laundry service to billing
 
-Jumpin Wash is a commercial laundry serving hotels. Its Google Workspace system connects each hotel–department’s laundry service from pickup and delivery through billing and collection follow-up, while giving management a view across operations and finance.
+Jumpin Wash is a commercial laundry serving hotels. I built and evolved its live Google Workspace operations system to connect pickup and delivery work with customer billing, collection follow-up, and management reporting.
 
-The operating challenge is coordinating item-level delivery completion with pickup-based billing cutoffs: a pickup cannot be billed until every item is delivered, yet its statement period is set by the pickup date. For example, a June 14 pickup completed June 18 remains in the June 1–15 statement. Each hotel–department receives one Statement of Account per cutoff. These are owner-confirmed rules; automatic enforcement of the delivery gate has not been established by the selected formula review.
+## The operating problem
 
-**See the system:** [Open the visual walkthrough](docs/implementation-walkthrough.md) for redacted production screens covering the combined SOS form, Statement of Account, Billing Tracker history, and Reports Dashboard.
+A pickup can be delivered in stages and cross a billing cutoff. The pickup date sets the statement period, but the hotel does not physically accept billing documents for that pickup until every item has been delivered. Each hotel–department receives one Statement of Account (SOA) per cutoff. The system has to keep the service record, billing period, statement, and follow-up aligned.
 
-## What the system does
+![Redacted production Reports Dashboard showing Production, Admin, and Finance views](assets/evidence/04-live-reports-dashboard.png)
 
-Specialized Google Workspace workbooks, shared references, spreadsheet formulas, and Apps Script support pickup/service records, delivery and linen-balance records, monthly billing, hotel–department summaries, status tracking, and management reporting. Billing preparation uses local period pricing; the Billing Tracker records dated validation, acceptance, and payment statuses. The Reports Dashboard aggregates outputs from operations, billing, supplies, and finance. Some KPI formulas and their exact lineage remain untraced.
+*Production dashboard; client identities, dates, and operating values are redacted. The supplied capture is clipped at the right edge.*
 
-This repository follows how information moves between those parts and documents selected formulas, scripts, business relationships, and verification limits. Its proposed relational design is portfolio analysis, not a deployed database or an ERP rebuild.
+## The service-to-billing loop
 
-## Reported business impact
+| Step | How the operation works | Evidence in this repo |
+|---|---|---|
+| Record the service | The Service Order Slip (SOS) combines pickup and delivery information, with item lines and quantities. | [SOS form](assets/evidence/01-sos-pickup-delivery-form.png) |
+| Complete delivery | Pickup items move through delivery; the hotel’s acceptance gate is reached only after all items are delivered. | [Business rule and evidence boundary](docs/implementation-walkthrough.md#the-control-that-connects-delivery-to-billing) |
+| Assign the cutoff | Pickup date determines the statement cutoff, even when delivery finishes later. | [Billing rule and example](docs/implementation-walkthrough.md#the-control-that-connects-delivery-to-billing) |
+| Prepare and follow up | Billing is consolidated into one SOA per hotel–department/cutoff; dated tracker statuses follow validation, acceptance, and payment. | [Statement](assets/evidence/02-statement-with-service-references.png) · [Tracker history](assets/evidence/03-billing-status-history.png) |
 
-Workforce assessments indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are workforce assessments, not formal timing-study results.
+The hotel's physical acceptance rule is an operational control. The inspected statement formula does not establish that the spreadsheet automatically blocks preparation or submission for an incomplete pickup; this repo keeps those claims separate.
 
-## My contribution
+## Reported impact
 
-I built the original Google Workspace production system and evolved it as operating needs changed. The project span of 2021–2026 is user-reported; available evidence does not date or attribute every later enhancement individually. The 2026 portfolio review mapped selected source-grounded business relationships, inspected formulas and Apps Script, and documented a proposed relational design. AI assisted this documentation and source review; it did not build the original system.
+Workforce assessments indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are reported assessments, not results from a formal timing study.
 
-## Explore the evidence
+## My role
 
-| Start with | What it covers |
-|---|---|
-| [Visual walkthrough](docs/implementation-walkthrough.md) | Production screen tour, billing rules, formula example, contribution, impact, and evidence limits |
-| [Production standards](docs/case-studies/production-standards.md) | Shared item definitions, new-item mapping, overrides, and processing parameters |
-| [Billing and collections](docs/case-studies/billing-and-collections.md) | Customer pricing, monthly file preparation, service amounts, consolidation, and status tracking |
-| [Executive reporting](docs/case-studies/executive-reporting.md) | Aggregate reporting inputs, management outputs, PDF/email distribution, and limits in KPI lineage |
+I built the original Google Workspace production system and evolved it as operating needs changed. The 2021–2026 project span is user-reported; available evidence does not date or attribute every enhancement individually. My 2026 portfolio work reviewed selected formulas and Apps Script, mapped the business relationships, and documented a proposed relational design. AI assisted that review and documentation, not the original production system.
 
-The [business relationships](docs/business-data-model.md#1-business-relationships) explain the source basis for SOS, delivery, billing, and cutoff rules; [how the workbooks connect](docs/architecture.md) documents module relationships.
+## Start here
 
-For implementation detail, inspect the [formula walkthrough](examples/formula-exhibits.md), [selected original automation helpers](src/README.md), and [data lineage](docs/data-model-and-lineage.md). The [proposed relational design](docs/business-data-model.md#3-proposed-relational-design) expresses business relationships as tables and constraints; it is separate from the deployed Google Workspace implementation.
+**[Open the visual implementation walkthrough](docs/implementation-walkthrough.md)** for the screen-by-screen story, the hotel acceptance control, formula evidence, and a claim-to-evidence map.
 
-## Scope and verification
+For deeper detail, see [billing and collections](docs/case-studies/billing-and-collections.md), [production standards](docs/case-studies/production-standards.md), [executive reporting](docs/case-studies/executive-reporting.md), [controls and validation](docs/controls-and-validation.md), and the [source-grounded business model](docs/business-data-model.md).
 
-The walkthroughs focus on billing, production standards, and reporting; payroll is part of the wider system but has no dedicated implementation walkthrough here. Selected source-derived formulas and historical documentation support different levels of detail; see [verification scope](docs/verification.md). Production records and private configuration are excluded. This is system documentation, not a complete deployment package. The selected Apps Script helpers have six isolated checks; they do not constitute a production test.
+This repository documents and analyzes the operating Google Workspace system. The proposed relational design is portfolio analysis; it is not a deployed database or an ERP rebuild. Production records and private configuration are excluded.
