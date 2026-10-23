@@ -8,7 +8,7 @@ The system grew around Jumpin Wash’s operating needs. I used specialized workb
 
 **Reuse templates and configuration.** The documented Billing Grabber process provisions monthly workbooks and copies period pricing. Selected formulas show billing-period selection and registry-driven imports. Templates support recurring work, but naming, cell positions and annual/monthly organization become part of the operating contract.
 
-**Share processing references.** Loading Standards maps items to process aliases and retrieves parameters through the effective alias. A small override expression provides explicit precedence. Key quality and override validity still matter; a lookup is not a complete reference-governance mechanism.
+**Share processing references.** Loading Standards maps items to process aliases and retrieves parameters through the effective alias. A small override expression provides explicit precedence. Live profiling found duplicate labels and a duplicated alias with different parameter rows. First-match behavior, key quality and override validity therefore matter; the proposed relational model does not assume source labels are unique.
 
 **Use quantity and weight for different questions.** The architecture documentation distinguishes customer fulfillment quantities from production workload in kilograms. The inspected weight expression includes a KG exception, but its alternate denominator’s units remain unresolved. Documentation of that formula does not establish dimensional correctness.
 
@@ -16,7 +16,7 @@ The system grew around Jumpin Wash’s operating needs. I used specialized workb
 
 Source-derived formulas in this repository were inspected as text, not executed end-to-end. Historical module documentation supports broader workflow descriptions. Operational improvements are based on on-ground workforce assessments. These evidence types support different claims.
 
-The bound billing and dashboard script files have been recovered and inspected. Selected original helpers are included with isolated tests; surrounding Google service workflows were not executed. The billing file references an unavailable helper on an error path, so complete project recovery is not claimed. Delivery-gate enforcement, current status selection and complete KPI lineage remain open where noted.
+The bound billing and dashboard script files have been recovered and inspected. Selected original helpers are included with isolated tests; surrounding Google service workflows were not executed. The billing file references an unavailable helper on an error path, so complete project recovery is not claimed. Current status selection has been inspected and uses the last matching physical row. Complete-delivery enforcement, protected event ordering and complete KPI lineage remain open where noted.
 
 The documents describe selected parts of a production system. They exclude customer records, financial transactions, salaries, pricing, personal data, credentials, private workbook locations and deployment configuration. They are not a complete installation or reproducibility package.
 

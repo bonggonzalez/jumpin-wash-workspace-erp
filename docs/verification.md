@@ -13,12 +13,12 @@ This record distinguishes inspected source material from behavior that has not b
 | Historical module documents | Support broader workflow descriptions and module responsibilities | Not substituted for current source verification |
 | Apps Script recovery | Bound billing file (five functions) and dashboard file (two functions) inspected directly | Source inspection only; billing error-path helper definition missing |
 | Isolated helper checks | Six checks passed for original range detection and recursive file search helpers | Mock objects and selected edge cases; no Google services |
-| Diagrams | Original four diagrams previously parsed and visually verified on GitHub; four additional ER diagrams added in the model supplement | New ER rendering checked during publication; no database execution implied |
-| Markdown local links | Checked for existing targets during document assembly | Not GitHub publication/rendering verification |
+| Diagrams | All eight published diagrams inspected in GitHub rendered output, including four ER views | Rendering verification does not establish data correctness or database execution |
+| Markdown local links | Relative file targets checked during assembly; selected published navigation inspected | Not a full crawl of external links or every anchor |
 | Targeted text disclosure scan | Files checked for private Google workbook URLs, Library IDs and common credential markers | Targeted scan plus human review; not a guarantee or a final whole-package review |
 
 No production formulas, configuration, scripts, permissions or triggers were changed. No script was executed against production, no whole-system test was performed.
 
 Documentation prepared with AI assistance for organization, explanation and source review. The original system development is attributed to Bong; current documentation work is separate from production implementation.
 
-Assembly checks cover local links, balanced code fences, source syntax and targeted private-link/credential markers. The connected review includes static SVG previews of the repository graph definitions. New model diagrams require publication rendering verification. Selected original helper code is included; a complete deployable Apps Script project is not.
+Assembly checks cover local links, balanced code fences, source syntax and targeted private-link/credential markers. GitHub rendering has been checked for all eight diagrams; the earlier connected review is a separate review artifact, not a file included in this repository. Selected original helper code is included; a complete deployable Apps Script project is not.

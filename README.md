@@ -19,19 +19,21 @@ flowchart TD
 
 *Functional overview from module documentation.*
 
-## How to read this system
+## Business impact
 
-**Start with [the business data model](docs/business-data-model.md).** It follows Service Order Slips (SOS) through complete delivery, pickup-date billing cutoffs and statement status, then separates observed Sheets relationships from proposed relational tables. The [lineage walkthrough](docs/data-model-and-lineage.md) traces selected formulas and imports. Then follow [the architecture walkthrough](docs/architecture.md): what each workbook holds, what its formulas or scripts do, and what the next workbook receives. Detailed formula traces remain optional.
+On-ground assessments with the workforce indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are workforce assessments, not formal timing-study results.
 
-Then follow the parts you want to examine:
+## Explore the system
 
-- **[Billing and collections](docs/case-studies/billing-and-collections.md):** how service records become statements, consolidated outputs, and billing status.
-- **[Production standards](docs/case-studies/production-standards.md):** how item references select shared processing parameters while allowing specific exceptions.
-- **[Executive reporting](docs/case-studies/executive-reporting.md):** how specialized reporting outputs become a management view.
+Start with [the business relationships](docs/business-data-model.md#1-business-relationships), then [how the workbooks connect](docs/architecture.md). A **Service Order Slip (SOS)** represents one pickup form. Pickup date determines its billing cutoff; all items must be delivered before that pickup can be billed.
 
-The [formula walkthrough](examples/formula-exhibits.md) opens up registry-driven imports, central price projections and configured reference ingestion. You can understand the overall design first, then inspect its mechanics.
+| Follow this story | What you can inspect |
+|---|---|
+| [Billing and collections](docs/case-studies/billing-and-collections.md) | Customer pricing, monthly file preparation, service amounts, consolidation and status tracking |
+| [Production standards](docs/case-studies/production-standards.md) | Shared item definitions, new-item mapping, overrides and processing parameters |
+| [Executive reporting](docs/case-studies/executive-reporting.md) | Reporting inputs, management outputs and PDF/email distribution |
 
-On-ground assessments with the workforce indicated billing turnaround moved from roughly 2–3 months to under one week, and payroll preparation from about one workday to two hours—not formal timing-study results.
+For technical depth, inspect the [formula walkthrough](examples/formula-exhibits.md), [original automation helpers](src/README.md), and [data lineage](docs/data-model-and-lineage.md). The [proposed relational design](docs/business-data-model.md#3-proposed-relational-design) expresses the business relationships as tables and constraints; it is new portfolio analysis, separate from the deployed Google Workspace implementation.
 
 ## Scope
 
