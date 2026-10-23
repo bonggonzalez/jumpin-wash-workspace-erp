@@ -25,6 +25,8 @@ On-ground assessments with the workforce indicated billing turnaround moved from
 
 ## Explore the system
 
+For a concise, source-anchored walkthrough from a pickup record through billing, collection follow-up, and management reporting, see [Follow one service record](docs/implementation-walkthrough.md).
+
 Start with [the business relationships](docs/business-data-model.md#1-business-relationships), then [how the workbooks connect](docs/architecture.md). A **Service Order Slip (SOS)** represents one pickup form. Pickup date determines its billing cutoff; all items must be delivered before that pickup can be billed.
 
 | Follow this story | What you can inspect |
