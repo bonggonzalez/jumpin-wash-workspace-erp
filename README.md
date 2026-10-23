@@ -27,7 +27,7 @@ Workforce assessments indicated billing turnaround moved from roughly **2–3 mo
 
 ## My role
 
-I built the original Google Workspace production system and evolved it as operating needs changed. The 2021–2026 project span is user-reported; available evidence does not date or attribute every enhancement individually. My 2026 portfolio work reviewed selected formulas and Apps Script, mapped the business relationships, and documented a proposed relational design. AI assisted that review and documentation, not the original production system.
+I built the original Google Workspace production system during 2021–2024. In 2026, I reviewed selected formulas and Apps Script, mapped the business relationships, and documented a proposed relational design. AI assisted that review and documentation, not the original production system.
 
 ## Start here
 
