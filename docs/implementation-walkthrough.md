@@ -4,7 +4,7 @@ Jumpin Wash is a commercial laundry serving hotels. This walkthrough follows the
 
 ## The service-to-cash flow
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   A["Hotel and department"] --> B["SOS records pickup"]
   B --> C["Item lines tracked through partial deliveries"]
@@ -17,7 +17,7 @@ flowchart TD
   H --> I["Completed Billing, For Validation, Accepted, Paid"]
   X["Operations, billing, supply, and finance outputs"] --> Y["Reports Dashboard aggregates module outputs"]
   Y --> Z["PDF export and email"]
-\`\`\`
+```
 
 *The solid service-to-cash handoffs summarize documented or inspected relationships. The dashed edge is an owner-confirmed business rule; automatic enforcement is unverified. Tracker statuses are recorded updates; timestamp ordering and transition enforcement were not established. The reporting branch is separate from the service-record flow, and some KPI formulas and lineage remain untraced.*
 
@@ -29,9 +29,9 @@ A Service Order Slip (SOS) represents one pickup form. Every item on that pickup
 
 The inspected monthly billing formula calculates a **line amount** from quantity and unit price:
 
-\`\`\`excel
+```excel
 =IF(ISERROR(H10*O10),"",H10*O10)
-\`\`\`
+```
 
 Here, **H** is quantity, **O** is unit price, and **P** is amount. The surrounding billing flow looks up the item’s local unit price first. This formula returns a blank on an error; it does not create an exception alert. See [billing and collections](case-studies/billing-and-collections.md) and the [formula exhibits](../examples/formula-exhibits.md) for pricing and consolidation details.
 
