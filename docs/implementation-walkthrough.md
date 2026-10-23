@@ -42,7 +42,7 @@ The status-history capture shows “Accepted” and “For Validation” entries
 
 ![Redacted production Reports Dashboard with Production, Admin, and Finance sections](../assets/evidence/04-live-reports-dashboard.png)
 
-The dashboard brings Production, Admin, and Finance sections together, including delivery performance, billing pipeline, reorder, and period-comparison views. Client identities, dates, and values are redacted. The supplied capture is clipped at the right edge.
+The full-width, read-only export brings Production, Admin, and Finance sections together, including delivery performance, billing pipeline, reorder, and period-comparison views. Client identifiers, date values, operating metrics, and formula-error cells are redacted. It shows a live management view; it does not establish KPI lineage or refresh frequency.
 
 ## The control that connects delivery to billing
 
