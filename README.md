@@ -8,7 +8,7 @@ A pickup can be delivered in stages and cross a billing cutoff. The pickup date 
 
 ![Redacted production Reports Dashboard showing Production, Admin, and Finance views](assets/evidence/04-live-reports-dashboard.png)
 
-*Production dashboard; client identities, dates, and operating values are redacted. The supplied capture is clipped at the right edge.*
+*Read-only export from the live Google Sheets dashboard. Client identifiers, date values, operating metrics, and formula-error cells are redacted.*
 
 ## The service-to-billing loop
 
