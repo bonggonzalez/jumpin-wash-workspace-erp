@@ -14,10 +14,10 @@ A pickup can be delivered in stages and cross a billing cutoff. The pickup date 
 
 | Step | How the operation works | Evidence in this repo |
 |---|---|---|
-| Record the service | The Service Order Slip (SOS) combines pickup and delivery information, with item lines and quantities. | [SOS form](assets/evidence/01-sos-pickup-delivery-form.png) |
+| Record the service | The Service Order Slip (SOS) combines pickup and delivery information, with item lines and quantities. | [Matched SOS–SOA example](assets/evidence/05-service-to-statement-match.png) |
 | Complete delivery | Pickup items move through delivery; the hotel’s acceptance gate is reached only after all items are delivered. | [Business rule and evidence boundary](docs/implementation-walkthrough.md#the-control-that-connects-delivery-to-billing) |
 | Assign the cutoff | Pickup date determines the statement cutoff, even when delivery finishes later. | [Billing rule and example](docs/implementation-walkthrough.md#the-control-that-connects-delivery-to-billing) |
-| Prepare and follow up | Billing is consolidated into one SOA per hotel–department/cutoff; dated tracker statuses follow validation, acceptance, and payment. | [Statement](assets/evidence/02-statement-with-service-references.png) · [Tracker history](assets/evidence/03-billing-status-history.png) |
+| Prepare and follow up | Billing is consolidated into one SOA per hotel–department/cutoff; dated tracker statuses follow validation, acceptance, and payment. | [SOA example](assets/evidence/05-service-to-statement-match.png) · [Tracker history](assets/evidence/03-billing-status-history.png) |
 
 The hotel's physical acceptance rule is an operational control. The inspected statement formula does not establish that the spreadsheet automatically blocks preparation or submission for an incomplete pickup; this repo keeps those claims separate.
 

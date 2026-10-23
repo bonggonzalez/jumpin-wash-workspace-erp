@@ -24,27 +24,21 @@ The hotel acceptance step is an owner-confirmed operational gate. It describes w
 
 ## Visual walkthrough
 
-These are separate, redacted captures from production screens. Client and transaction identifiers are concealed, so the images do not form a linked record-level trace.
+The first exhibit pairs two production views from the same pickup. The actual reference and other identifying details are covered; “MATCHED PICKUP” is the same neutral label substituted in both views.
 
-### 1. The SOS captures pickup and delivery together
+### 1. One pickup linked to its statement
 
-![Redacted production SOS form showing pickup and delivery fields and service item structure](../assets/evidence/01-sos-pickup-delivery-form.png)
+![Redacted production SOS and corresponding Statement of Account with one shared placeholder](../assets/evidence/05-service-to-statement-match.png)
 
-The form shows pickup and delivery dates, item lines, quantities, balance, and service amount fields. Its visible heading says “Delivery Receipt (DR).” The SOS is the combined form used for pickup and delivery.
+The same service reference appears on the combined pickup-and-delivery form and the SOA line. Actual names, dates, references, quantities, prices, and amounts are hidden. The panel demonstrates a real record-to-statement connection; it does not prove that the spreadsheet automatically prevents billing before delivery is complete.
 
-### 2. The SOA connects charges to service references
-
-![Redacted production Statement of Account with SOS and delivery receipt reference columns](../assets/evidence/02-statement-with-service-references.png)
-
-The statement layout includes SOS and delivery-receipt references on its service lines. Customer details, service period, references, and amounts are concealed.
-
-### 3. The tracker follows billing status
+### 2. The tracker follows billing status
 
 ![Redacted Billing Tracker status-history log with Accepted and For Validation states visible](../assets/evidence/03-billing-status-history.png)
 
 The status-history capture shows “Accepted” and “For Validation” entries. Identifiers, dates, times, periods, and amounts are concealed. It supports the presence of recorded statuses; it does not establish timestamp-based ordering or enforced status transitions.
 
-### 4. The dashboard gives management an operating view
+### 3. The dashboard gives management an operating view
 
 ![Redacted production Reports Dashboard with Production, Admin, and Finance sections](../assets/evidence/04-live-reports-dashboard.png)
 
@@ -64,14 +58,14 @@ The first rule is the external customer-acceptance gate, confirmed by the system
 
 | Claim | Evidence reviewed | What it establishes |
 |---|---|---|
-| The service record combines pickup and delivery details | Redacted SOS screen and source-grounded business model | Visible form structure and documented relationship; the screenshot is not a complete process trace |
+| A pickup service record can be referenced on an SOA line | Matched redacted SOS–SOA panel and source-grounded business model | Visible reference link for this example plus documented relationship; it does not prove the delivery gate is automated |
 | Billing documents are accepted by the hotel after complete delivery | Owner-confirmed operating rule | External acceptance condition; spreadsheet enforcement remains unverified |
 | Pickup date controls the statement period | Owner-confirmed rule and selected statement-selection formula | Cutoff logic for the reviewed path; not every workbook path |
 | Billing amount uses quantity and local unit price | Selected monthly billing formula | The reviewed line amount calculation |
 | Tracker records validation/acceptance states | Redacted status history and selected formulas | Visible statuses and selected current-status logic; no proof of timestamp order or transition controls |
 | Dashboard brings multiple operational areas together | Redacted dashboard capture and reporting documentation | Dashboard sections and documented aggregation; some KPI formula lineage remains untraced |
 
-The screenshots prove that production interfaces exist and show representative structures. Because values and identifiers are redacted, they do not prove that one transaction was followed across every screen, that all data were current at capture time, or that every reconciliation control was executed.
+The paired panel connects one service record to a statement line by a shared reference. It does not verify current data freshness, execution of reconciliation, automatic delivery gating, or dashboard KPI lineage. The tracker and dashboard are separate production captures and are not linked to this same record.
 
 ## One formula, in context
 
