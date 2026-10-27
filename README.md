@@ -4,7 +4,9 @@ Jumpin Wash is a commercial laundry serving hotels. I designed and built its liv
 
 Google Sheets formulas and Apps Script connect workbooks and automate selected tasks. Configuration tables identify workbook locations, billing cutoffs, and statement cells used to import billing values into summaries.
 
-**Explore the implementation:** [Configuration-driven billing import](examples/formula-exhibits.md#select-a-billing-cutoff-before-importing-its-total) · [Apps Script automation and isolated checks](src/README.md)
+**Business overview:** [Visual service-to-billing walkthrough](docs/implementation-walkthrough.md)
+
+**Technical evidence:** [Billing import formula](examples/formula-exhibits.md#select-a-billing-cutoff-before-importing-its-total) · [Apps Script example](src/README.md#dashboard-range-helper) · [Business data model](docs/business-data-model.md) · [Verification scope](docs/verification.md)
 
 This repository presents selected redacted evidence and reviewed code and formulas; it is not a complete deployable copy of the system.
 
@@ -35,9 +37,7 @@ For a typical billing case, workforce assessments indicated that the process fro
 
 I built the original Google Workspace production system during 2021–2024. In 2026, I reviewed selected formulas and Apps Script, mapped the business relationships, and documented a proposed relational design. AI assisted that review and documentation, not the original production system.
 
-## Start here
-
-**[Open the visual implementation walkthrough](docs/implementation-walkthrough.md)** for the screen-by-screen story, the hotel acceptance control, formula evidence, and a claim-to-evidence map.
+## Explore further
 
 For deeper detail, see [billing and collections](docs/case-studies/billing-and-collections.md), [production standards](docs/case-studies/production-standards.md), [executive reporting](docs/case-studies/executive-reporting.md), [controls and validation](docs/controls-and-validation.md), and the [source-grounded business model](docs/business-data-model.md).
 
