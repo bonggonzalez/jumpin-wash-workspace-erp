@@ -1,6 +1,12 @@
 # Jumpin Wash | Hotel laundry service to billing
 
-Jumpin Wash is a commercial laundry serving hotels. I built and evolved its live Google Workspace operations system to connect pickup and delivery work with customer billing, collection follow-up, and management reporting.
+Jumpin Wash is a commercial laundry serving hotels. I designed and built its live Google Workspace operations system to connect pickup and delivery records with billing, collection follow-up, and management reporting.
+
+Google Sheets formulas and Apps Script connect workbooks and automate selected tasks. Configuration tables identify workbook locations, billing cutoffs, and statement cells used to import billing values into summaries.
+
+**Explore the implementation:** [Configuration-driven billing import](examples/formula-exhibits.md#select-a-billing-cutoff-before-importing-its-total) · [Apps Script automation and isolated checks](src/README.md)
+
+This repository presents selected redacted evidence and reviewed code and formulas; it is not a complete deployable copy of the system.
 
 ## The operating problem
 
@@ -23,7 +29,7 @@ The hotel's physical acceptance rule is an operational control. The inspected st
 
 ## Reported impact
 
-Workforce assessments indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are reported assessments, not results from a formal timing study.
+For a typical billing case, workforce assessments indicated that the process from **billing cutoff through reconciliation and hotel acceptance** moved from roughly **2–3 months to under one week**. The endpoint is when the hotel is processing payment and requires nothing further from Jumpin Wash; it is not payment receipt. The linen balance sheet helped operations identify and close outstanding pickup balances so applicable Service Order Slips were ready for reconciliation. Payroll preparation was reported to have moved from **about one workday to two hours**. These are reported assessments, not results from a formal timing study.
 
 ## My role
 
