@@ -69,7 +69,7 @@ The paired panel connects one service record to a statement line by a shared ref
 
 ## One formula, in context
 
-A formula in the sampled Summary workbook brings a billing statement total into the appropriate summary cell. Configuration tables determine where to look:
+Accounts can follow monthly, biweekly, or weekly billing schedules. In the sampled Summary workbook, configuration tables identify which cutoff applies and where its statement total is stored, allowing the same formula structure to support different schedules. The formula then brings the total into the appropriate summary cell:
 
 1. Build a key for the monthly billing workbook.
 2. Look up the applicable cutoff.
