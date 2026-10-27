@@ -30,7 +30,7 @@ The first exhibit pairs two production views from the same pickup. The actual re
 
 ![Redacted production SOS and corresponding Statement of Account with one shared placeholder](../assets/evidence/05-service-to-statement-match.png)
 
-The same service reference appears on the combined pickup-and-delivery form and the SOA line. Actual names, dates, references, quantities, prices, and amounts are hidden. The panel demonstrates a real record-to-statement connection; it does not prove that the spreadsheet automatically prevents billing before delivery is complete.
+The same placeholder appears on the combined pickup-and-delivery form and in the SOA reference box. Actual names, dates, references, quantities, prices, and amounts are hidden. The source review identified these as corresponding records; the redacted image alone cannot independently verify the underlying match or prove an automatic billing block.
 
 ### 2. The tracker follows billing status
 
@@ -58,14 +58,14 @@ The first rule is the external customer-acceptance gate, confirmed by the system
 
 | Claim | Evidence reviewed | What it establishes |
 |---|---|---|
-| A pickup service record can be referenced on an SOA line | Matched redacted SOS–SOA panel and source-grounded business model | Visible reference link for this example plus documented relationship; it does not prove the delivery gate is automated |
+| A pickup service record can be referenced on an SOA | Redacted SOS–SOA panel and source-grounded business model | The shared placeholder illustrates a source-reviewed relationship; redaction prevents independent verification of the original references and does not prove an automated delivery gate |
 | Billing documents are accepted by the hotel after complete delivery | Owner-confirmed operating rule | External acceptance condition; spreadsheet enforcement remains unverified |
 | Pickup date controls the statement period | Owner-confirmed rule and selected statement-selection formula | Cutoff logic for the reviewed path; not every workbook path |
 | Billing amount uses quantity and local unit price | Selected monthly billing formula | The reviewed line amount calculation |
 | Tracker records validation/acceptance states | Redacted status history and selected formulas | Visible statuses and selected current-status logic; no proof of timestamp order or transition controls |
 | Dashboard brings multiple operational areas together | Redacted dashboard capture and reporting documentation | Dashboard sections and documented aggregation; some KPI formula lineage remains untraced |
 
-The paired panel connects one service record to a statement line by a shared reference. It does not verify current data freshness, execution of reconciliation, automatic delivery gating, or dashboard KPI lineage. The tracker and dashboard are separate production captures and are not linked to this same record.
+The paired panel uses a shared placeholder for a source-reviewed record-to-statement relationship; the original references are concealed. It does not verify current data freshness, execution of reconciliation, automatic delivery gating, or dashboard KPI lineage. The tracker and dashboard are separate production captures and are not linked to this same record.
 
 ## One formula, in context
 
