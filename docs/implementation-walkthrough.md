@@ -69,17 +69,23 @@ The paired panel connects one service record to a statement line by a shared ref
 
 ## One formula, in context
 
-The selected monthly billing formula calculates a line amount from quantity and unit price:
+A formula in the sampled Summary workbook brings a billing statement total into the appropriate summary cell. Configuration tables determine where to look:
 
-~~~excel
-=IF(ISERROR(H10*O10),"",H10*O10)
-~~~
+1. Build a key for the monthly billing workbook.
+2. Look up the applicable cutoff.
+3. Resolve the statement tab and total-cell address.
+4. Look up the source workbook location.
+5. Use `IMPORTRANGE` to bring the value into the Summary.
 
-Here, H is quantity, O is unit price, and P is amount. The formula displays blank if its multiplication errors; it does not create an exception alert. The selected statement path and its delivery-gate evidence are discussed in [billing and collections](case-studies/billing-and-collections.md) and the [formula exhibits](../examples/formula-exhibits.md).
+An empty cutoff returns a dash. The formula returns `NA` for applicable `#N/A` results, but does not catch every error. It depends on correct configuration, source layout, and Google Sheets access permissions.
+
+The inspected later-month cells included permission and internal-import errors. Earlier-month cells contained values, but that observation does not establish freshness or reconciliation. The formula does not establish that the system automatically blocks billing before delivery is complete.
+
+[View the original formula and its configuration dependencies](../examples/formula-exhibits.md#select-a-billing-cutoff-before-importing-its-total).
 
 ## Impact and contribution
 
-Workforce assessments indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are reported assessments, not formal timing-study results.
+For a typical billing case, workforce assessments indicated that the process from **billing cutoff through reconciliation and hotel acceptance** moved from roughly **2–3 months to under one week**. The endpoint is when the hotel is processing payment and requires nothing further from Jumpin Wash; it is not payment receipt. The linen balance sheet helped operations identify and close outstanding pickup balances so applicable Service Order Slips were ready for reconciliation. Payroll preparation was reported to have moved from **about one workday to two hours**. These are reported assessments, not results from a formal timing study.
 
 I built the original Google Workspace production system during 2021–2024. In 2026, I reviewed selected formulas and Apps Script, mapped source-grounded business relationships, and documented a proposed relational design. AI assisted this portfolio review; it did not build the original system.
 
