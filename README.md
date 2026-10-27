@@ -1,6 +1,14 @@
 # Jumpin Wash | Hotel laundry service to billing
 
-Jumpin Wash is a commercial laundry serving hotels. I built and evolved its live Google Workspace operations system to connect pickup and delivery work with customer billing, collection follow-up, and management reporting.
+Jumpin Wash is a commercial laundry serving hotels. I designed and built its live Google Workspace operations system to connect pickup and delivery records with billing, collection follow-up, and management reporting.
+
+Google Sheets formulas and Apps Script connect workbooks and automate selected tasks. Configuration tables identify workbook locations, billing cutoffs, and statement cells used to import billing values into summaries.
+
+**Business overview:** [Visual service-to-billing walkthrough](docs/implementation-walkthrough.md)
+
+**Technical evidence:** [Billing import formula](examples/formula-exhibits.md#select-a-billing-cutoff-before-importing-its-total) · [Apps Script example](src/README.md#dashboard-range-helper) · [Business data model](docs/business-data-model.md) · [Verification scope](docs/verification.md)
+
+This repository presents selected redacted evidence and reviewed code and formulas; it is not a complete deployable copy of the system.
 
 ## The operating problem
 
@@ -23,15 +31,13 @@ The hotel's physical acceptance rule is an operational control. The inspected st
 
 ## Reported impact
 
-Workforce assessments indicated billing turnaround moved from roughly **2–3 months to under one week**, and payroll preparation from **about one workday to two hours**. These are reported assessments, not results from a formal timing study.
+For a typical billing case, workforce assessments indicated that the process from **billing cutoff through reconciliation and hotel acceptance** moved from roughly **2–3 months to under one week**. The endpoint is when the hotel is processing payment and requires nothing further from Jumpin Wash; it is not payment receipt. The linen balance sheet helped operations identify and close outstanding pickup balances so applicable Service Order Slips were ready for reconciliation. Payroll preparation was reported to have moved from **about one workday to two hours**. These are reported assessments, not results from a formal timing study.
 
 ## My role
 
 I built the original Google Workspace production system during 2021–2024. In 2026, I reviewed selected formulas and Apps Script, mapped the business relationships, and documented a proposed relational design. AI assisted that review and documentation, not the original production system.
 
-## Start here
-
-**[Open the visual implementation walkthrough](docs/implementation-walkthrough.md)** for the screen-by-screen story, the hotel acceptance control, formula evidence, and a claim-to-evidence map.
+## Explore further
 
 For deeper detail, see [billing and collections](docs/case-studies/billing-and-collections.md), [production standards](docs/case-studies/production-standards.md), [executive reporting](docs/case-studies/executive-reporting.md), [controls and validation](docs/controls-and-validation.md), and the [source-grounded business model](docs/business-data-model.md).
 
